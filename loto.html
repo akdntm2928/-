@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball{
+            display:inline-block;
+            border:1px solid black;
+            border-radius: 20px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result">추첨 결과는? : </div>
+    <div id="bonus">보너스 :</div>
+    <script>
+        const $result = document.querySelector('#result');
+        const $bonus = document.querySelector('#bonus');
+        function colorrise(number,$tag){
+            if(number<10){
+                $tag.style.backgroundColor ='red';
+                $tag.style.color ='white';
+            }else if(number<20){
+                $tag.style.backgroundColor ='orange';
+            }else if(number<30){
+                $tag.style.backgroundColor ='yellow';
+            }else if(number<40){
+                $tag.style.backgroundColor ='blue';
+                $tag.style.color ='white';
+            }else{
+                $tag.style.backgroundColor ='green';
+                $tag.style.color ='white';
+            }
+
+        }
+
+        let shuffleTemp = Array(45).fill(0).map((val,index)=> index+1);
+        let answer =[];
+        while(shuffleTemp.length>0){
+            let random = Math.floor(Math.random()*shuffleTemp.length);
+            let shuffleTempSplice = shuffleTemp.splice(random,1);
+            answer.push(...shuffleTempSplice);
+        }
+        const winball =answer.slice(0,6).sort((a,b)=>a-b);
+
+        const bonus = answer[6];
+        console.log(winball)
+        const setCreateDom  = (val,$tag)=>{
+            const $ball =document.createElement('div')
+            $ball.className = 'ball';
+            $ball.textContent = val;
+            colorrize(val,$ball);
+            $tag.appendChild($ball);
+        }
+        for(let i = 0; i<winball.length; i++){
+            setTimeout(() => {           
+            setCreateDom(winball[i],$result);
+            }, 1000*(i+1));
+        }
+        setTimeout(() => {
+            console.log('asdasd');
+            setCreateDom(bonus,$bonus);
+        }, 1000*7);
+        // for(let i = 0; i<winball.length; i++){// var는 값이 블록스코프을 벗어나도 값이 계속 변하기떄문에 해당 로직에서 문제가 됨
+            
+        //     (function (j) {                   // let 사용하면 블록 스코프을 나면 값이 사라지고 비동기함수에 적용되기 떄문에 문제가 없음.
+        //         setTimeout(() => {           
+        //         setCreateDom(answer[j],$result);
+        //         }, 1000*(j));
+        //     })(i)
+         
+        // }
+    </script>    
+</body>
+
+</html>
