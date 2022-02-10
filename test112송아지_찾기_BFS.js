@@ -28,7 +28,7 @@ function solution(n,k){
     dis[n] =0;
     while(queue.length){
         let x = queue.shift();
-        
+          
         for(let nx of [x-1,x+1,x+5]){
             if(nx ===k) return answer = dis[x]+1;
             if(nx>0 && nx<=100000 & ch[nx] ===0){
