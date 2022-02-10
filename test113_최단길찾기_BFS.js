@@ -18,8 +18,7 @@ function solution(board){
       
         let nx = prev[0] + dx[k];
         let ny = prev[1] + dy[k];
-        
-     
+
         if(nx>=0 && ny>=0 && nx<boardx && ny<boardy && board[nx][ny] ==1){
             board[nx][ny] = 0;
             queue.push([nx,ny]);

@@ -3,8 +3,7 @@ function solution(target,array){
     function DFS(n,sum){
         if(sum >target) return;
         if(sum === target){
-            console.log(sum);
-            // console.log(answer);
+           
             answer = Math.min(answer,n);
         }else{
             for(let i = 0; i<array.length; i++){
@@ -16,6 +15,5 @@ function solution(target,array){
     return answer
 }
 
-console.log(solution(15,
-    [1,2,5])
+console.log(solution(    5,[1,2,5])
     )

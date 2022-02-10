@@ -26,4 +26,4 @@ function solution(arr){
     return ""+answer;
 }
 
-console.log(solution([6,10,2]))
+console.log(solution([1000, 100]))
