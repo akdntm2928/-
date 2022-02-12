@@ -31,9 +31,7 @@ function solution(board){
     let boardy =board[0].length-1
     let dx = [-1,0,1,0];
     let dy = [0,1,0,-1];
-    let tmp=[];
     let answer = 0;
-
 
     function DFS(x,y){
         if(x==boardx && y ==boardy){
@@ -43,7 +41,7 @@ function solution(board){
                 let nx = x+dx[k];
                 let ny = y+dy[k];
                 if(nx>= 0 && ny>= 0 && nx<=boardx && ny<=boardy && board[nx][ny] ==0){
-                    // tmp.push(1);
+           
                     board[nx][ny] = 1
                     DFS(nx,ny);
                     board[nx][ny] = 0

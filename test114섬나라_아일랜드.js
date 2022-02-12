@@ -32,6 +32,7 @@ function solution(board){
     let n = board.length;
     let dx = [-1,-1,0,1,1,1,0,-1];
     let dy = [0,1,1,1,0,-1,-1,-1];
+
     let answer = 0;
     function DFS(x,y){
         board[x][y] =0;
